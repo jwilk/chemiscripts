@@ -1,0 +1,6 @@
+.. code:: console
+
+   $ chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
+   3(NH₄)₂S + Sb₂S₅ → 6NH₄⁺ + 2SbS₄³⁺
+
+.. vim:ft=rst ts=3 sts=3 sw=3 et

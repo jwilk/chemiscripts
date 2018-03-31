@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+# Copyright © 2017 Jakub Wilk <jwilk@jwilk.net>
+# SPDX-License-Identifier: MIT
+
+import argparse
+import re
+
+class Script(object):
+
+    def __init__(self, s):
+        d = self._dict = {}
+        plus, minus, *digits = s
+        d[ord('+')] = plus
+        d[ord('-')] = minus
+        for u, digit in enumerate(digits, start=ord('0')):
+            d[u] = digit
+
+    def translate(self, s):
+        return s.translate(self._dict)
+
+sup = Script('⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹')
+sub = Script('₊₋₀₁₂₃₄₅₆₇₈₉')
+arrows = {
+    '->': '→',
+    '=': '⇌',
+}
+
+_regexp = re.compile(r'''
+(?<=[])A-Za-z])(?P<sub>[0-9]+) |
+(?<=[])A-Za-z0-9])(?P<sup1>\s+[0-9]+[+-]) |
+(?<=[])A-Za-z0-9])(?P<sup2>[+-]) |
+(?P<arr>=|->)
+''', re.VERBOSE)
+
+def translate(formula):
+    def subst(match):
+        for k, s in match.groupdict().items():
+            if s is None:
+                continue
+            if k == 'sub':
+                return sub.translate(s)
+            elif k[:3] == 'sup':
+                return sup.translate(s.strip())
+            else:
+                return arrows[s]
+    return _regexp.sub(subst, formula)
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('formula', metavar='FORMULA', nargs='+')
+    options = ap.parse_args()
+    formula = ' '.join(options.formula)
+    print(translate(formula))
+
+if __name__ == '__main__':
+    main()
+
+# vim:ts=4 sts=4 sw=4 et
