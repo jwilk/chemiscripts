@@ -9,9 +9,11 @@ python:
 - "3.6"
 - "3.7-dev"
 before_install:
+- pyflakes=pyflakes
+- if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
 - if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pygments=:; fi
 install:
-- pip install pydiatra pyflakes
+- pip install pydiatra $pyflakes
 - $if_pygments pip install restructuredtext-lint pygments
 script:
 - ./chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
