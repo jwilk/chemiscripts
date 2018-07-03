@@ -35,15 +35,14 @@ _regexp = re.compile(r'''
 
 def translate(formula):
     def subst(match):
-        for k, s in match.groupdict().items():
-            if s is None:
-                continue
-            if k == 'sub':
-                return sub.translate(s)
-            elif k[:3] == 'sup':
-                return sup.translate(s.strip())
-            else:
-                return arrows[s]
+        k = match.lastgroup
+        s = match.group()
+        if k == 'sub':
+            return sub.translate(s)
+        elif k[:3] == 'sup':
+            return sup.translate(s.strip())
+        else:
+            return arrows[s]
     return _regexp.sub(subst, formula)
 
 def main():
