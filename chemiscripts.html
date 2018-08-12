@@ -8,8 +8,8 @@ SPDX-License-Identifier: MIT
 <title>ChemiScripts — translate ASCII chemical formulas to Unicode</title>
 <body>
 <noscript><div>Please enable JavaScript to use this site.</div></noscript>
-<form action="" method="GET">
-<input name="q" id="query">
+<form>
+    <input id="query" placeholder="Type the formula here…" value="3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+" autofocus>
 </form>
 <div id="out">
 </div>
@@ -78,20 +78,16 @@ function translate(formula)
     return formula.replace(_regexp, translate_one);
 }
 
-var query = window.location.search.substring(1);
-var formula;
-query = query.split("&");
-for (let s of query) {
-    s = s.split("=", 2);
-    if (s[0] === "q") {
-        formula = decodeURIComponent(s[1].replace(/[+]/g, " "));
-        break;
-    }
-}
-var elt = document.getElementById("query");
-elt.value = formula;
-elt = document.getElementById("out");
-elt.textContent = translate(formula);
+var query = document.getElementById("query");
+var output = document.getElementById("out");
+
+query.style.display = "block";
+output.style.display = "block";
+
+query.addEventListener("input", (event) => {
+  output.textContent = translate(event.target.value);
+});
+output.textContent = translate(query.value);
 
 </script>
 </body>
