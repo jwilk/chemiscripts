@@ -20,5 +20,14 @@ script:
 - python3 -m pydiatra .
 - python3 -m pyflakes .
 - $if_pygments restructuredtext-lint --encoding=UTF-8 README
+matrix:
+  include:
+  - env: HTML5VALIDATOR=y
+    python: null
+    before_install: []
+    install:
+    - pip install html5validator
+    script:
+    - html5validator --also-check-css *.html
 
 # vim:ts=2 sts=2 sw=2 et
