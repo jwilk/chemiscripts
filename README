@@ -1,6 +1,15 @@
+**ChemiScripts** translates chemicals formula written in ASCII into Unicode.
+
+Two implementations are available:
+
+1. Command-line interface written in Python 3:
+
 .. code:: console
 
    $ chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
    3(NH₄)₂S + Sb₂S₅ → 6NH₄⁺ + 2SbS₄³⁺
+
+2. `Web interface <https://jwilk.github.io/chemiscripts/>`_
+   written in HTML + JavaScript.
 
 .. vim:ft=rst ts=3 sts=3 sw=3 et
