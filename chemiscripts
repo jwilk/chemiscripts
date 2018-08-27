@@ -21,7 +21,7 @@ class Script(object):
 
 sup = Script('⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹')
 sub = Script('₊₋₀₁₂₃₄₅₆₇₈₉')
-arrows = {
+misc = {
     '->': '→',
     '=': '⇌',
 }
@@ -30,7 +30,7 @@ _regexp = re.compile(r'''
 (?<=[])A-Za-z])(?P<sub>[0-9]+) |
 (?<=[])A-Za-z0-9])(?P<sup1>\s+[0-9]+[+-]) |
 (?<=[])A-Za-z0-9])(?P<sup2>[+-]) |
-(?P<arr>->|=)
+(?P<misc>->|=)
 ''', re.VERBOSE)
 
 def translate(formula):
@@ -42,7 +42,7 @@ def translate(formula):
         elif k[:3] == 'sup':
             return sup.translate(s.strip())
         else:
-            return arrows[s]
+            return misc[s]
     return _regexp.sub(subst, formula)
 
 def main():
