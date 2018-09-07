@@ -62,12 +62,14 @@ var sub = new Script("₊₋₀₁₂₃₄₅₆₇₈₉");
 var misc = {
     "->": "→",
     "=": "⇌",
+    ".": "·",
+    "*": "·",
 };
 
 var _regexp = [
     /([\]\)A-Za-z])([0-9]*)([+-]?)/,
     /(\s+)([0-9]+[+-])/,
-    /(->|=)/
+    /(->|[=.*])/
 ];
 _regexp = _regexp.map(function(re) { return re.source }).join("|");
 _regexp = new RegExp(_regexp, "g");
