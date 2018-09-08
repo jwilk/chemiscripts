@@ -94,7 +94,7 @@ var output = document.getElementById("out");
 query.style.display = "block";
 output.style.display = "block";
 
-query.addEventListener("input", (event) => {
+query.addEventListener("input", function(event) {
     output.textContent = translate(event.target.value);
 });
 output.textContent = translate(query.value);
