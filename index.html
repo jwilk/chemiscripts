@@ -40,8 +40,8 @@ function Script(s)
 {
     this["+"] = s[0];
     this["-"] = s[1];
-    for (let i = 0; i < 10; i++) {
-        let c = chr(ord("0") + i)
+    for (var i = 0; i < 10; i++) {
+        var c = chr(ord("0") + i)
         this[c] = s[2 + i];
     }
 }
@@ -49,7 +49,7 @@ function Script(s)
 Script.prototype.translate = function(s) {
     var script = this;
     var trans_char = function(c) {
-        let t = script[c];
+        var t = script[c];
         if (t === undefined)
             t = c;
         return t;
