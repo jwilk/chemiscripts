@@ -16,7 +16,7 @@ SPDX-License-Identifier: MIT
     a { color: inherit; text-decoration: none; font-weight: normal; }
 </style>
 <body>
-<noscript><div>Please enable JavaScript to use this site.</div></noscript>
+<div id="no-js">This site requires modern browser with JavaScript enabled.</div>
 <form>
     <input id="query" placeholder="Type the formula here…" value="3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+" autofocus>
 </form>
@@ -98,6 +98,8 @@ query.addEventListener("input", (event) => {
   output.textContent = translate(event.target.value);
 });
 output.textContent = translate(query.value);
+
+document.getElementById("no-js").style.display = "none";
 
 </script>
 </body>
