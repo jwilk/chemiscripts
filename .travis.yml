@@ -10,23 +10,21 @@ python:
 before_install:
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
-- if [[ $TRAVIS_PYTHON_VERSION = 3.2 ]]; then if_pygments=:; fi
 install:
 - python3 -m pip install pydiatra $pyflakes
-- $if_pygments python3 -m pip install restructuredtext-lint pygments
 script:
 - ./chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
 - python3 -m pydiatra .
 - python3 -m pyflakes .
-- $if_pygments restructuredtext-lint --encoding=UTF-8 README
 matrix:
   include:
-  - env: HTML5VALIDATOR=y
-    python: null
+  - python: null
     before_install: []
     install:
+    - pip install restructuredtext-lint pygments
     - pip install html5validator
     script:
+    - restructuredtext-lint --encoding=UTF-8 README
     - html5validator --also-check-css *.html
 
 # vim:ts=2 sts=2 sw=2 et
