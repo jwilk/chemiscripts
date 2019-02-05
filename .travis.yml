@@ -1,12 +1,13 @@
 dist: trusty
 language: python
-python:
-- "3.2"
-- "3.3"
-- "3.4"
-- "3.5"
-- "3.6"
-- "3.7-dev"
+jobs:
+  include:
+  - python: "3.2"
+  - python: "3.3"
+  - python: "3.4"
+  - python: "3.5"
+  - python: "3.6"
+  - python: "3.7-dev"
 before_install:
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
