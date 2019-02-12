@@ -11,6 +11,14 @@ jobs:
     dist: xenial
   - python: "3.8-dev"
     dist: xenial
+  - python: null
+    before_install: []
+    install:
+    - pip install restructuredtext-lint pygments
+    - pip install html5validator
+    script:
+    - restructuredtext-lint --encoding=UTF-8 README
+    - html5validator --also-check-css *.html
 before_install:
 - pyflakes=pyflakes
 - if [[ $TRAVIS_PYTHON_VERSION = 3.[23] ]]; then pyflakes='pyflakes<2'; fi
@@ -20,15 +28,5 @@ script:
 - ./chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
 - python3 -m pydiatra .
 - python3 -m pyflakes .
-matrix:
-  include:
-  - python: null
-    before_install: []
-    install:
-    - pip install restructuredtext-lint pygments
-    - pip install html5validator
-    script:
-    - restructuredtext-lint --encoding=UTF-8 README
-    - html5validator --also-check-css *.html
 
 # vim:ts=2 sts=2 sw=2 et
