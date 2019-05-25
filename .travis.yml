@@ -1,16 +1,16 @@
-dist: trusty
+dist: xenial
 language: python
 jobs:
   include:
   - python: "3.2"
+    dist: trusty
   - python: "3.3"
+    dist: trusty
   - python: "3.4"
   - python: "3.5"
   - python: "3.6"
   - python: "3.7"
-    dist: xenial
   - python: "3.8-dev"
-    dist: xenial
   - python: null
     before_install: []
     install:
