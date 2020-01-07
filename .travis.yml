@@ -25,7 +25,7 @@ before_install:
 install:
 - python3 -m pip install pydiatra $pyflakes
 script:
-- ./chemiscripts '3(NH4)2S + Sb2S5 -> 6NH4+ + 2SbS4 3+'
+- prove -v
 - python3 -m pydiatra .
 - python3 -m pyflakes .
 
