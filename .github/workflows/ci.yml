@@ -34,7 +34,7 @@ jobs:
         python-version: ${{matrix.python}}
     - name: run tests
       run: |
-        prove -v
+        prove -v t/python*.t
     - name: run pydiatra
       run: |
         python3 -m pip install pydiatra
@@ -53,6 +53,9 @@ jobs:
       run: |
         python3 -m pip install html5validator
         html5validator --also-check-css *.html
+    - name: run tests
+      run: |
+        prove -v t/*js*.t
     - name: check README syntax
       run: |
         python3 -m pip install restructuredtext-lint pygments
