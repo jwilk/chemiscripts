@@ -3,6 +3,7 @@
 # Copyright © 2022 Jakub Wilk <jwilk@jwilk.net>
 # SPDX-License-Identifier: MIT
 
+import builtins
 import os
 import re
 import shlex
@@ -10,6 +11,15 @@ import subprocess
 import sys
 
 here = os.path.dirname(__file__)
+
+def repr(s):
+    r = builtins.repr(s)
+    try:
+        r.encode(sys.stdout.encoding, errors='strict')
+    except UnicodeError:
+        return ascii(s)
+    else:
+        return r
 
 def main():
     data_path = here + '/cases'
