@@ -30,7 +30,7 @@ def main():
     exe_path = here + '/../chemiscripts'
     for para in data:
         [src, dst] = para.splitlines()
-        print('#', shlex.quote(src))
+        print('###', shlex.quote(src))
         proc = subprocess.Popen(
             [exe_path, src],
             stdout=subprocess.PIPE,
