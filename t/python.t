@@ -40,7 +40,7 @@ def main():
             stderr = stderr.decode('ASCII', 'replace').splitlines()
             for line in stderr:
                 print('# |', line)
-        stdout = stdout.decode(sys.stdout.encoding, errors=sys.stdout.errors)
+        stdout = stdout.decode(sys.stdout.encoding)
         xstdout = dst + '\n'
         if stdout == xstdout:
             print('ok - stdout')
