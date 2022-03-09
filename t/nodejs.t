@@ -6,9 +6,15 @@
 'use strict';
 
 const fs = require('fs');
+const process = require('process')
 const vm = require('vm');
 
-const print = console.log;
+function print(...args)
+{
+    const s = args.join(' ') + '\n';
+    return process.stdout.write(s);
+}
+
 const repr = JSON.stringify;
 
 const here = __dirname;
