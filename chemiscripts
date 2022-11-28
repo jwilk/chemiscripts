@@ -51,7 +51,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('formula', metavar='FORMULA', nargs='+')
     options = ap.parse_args()
-    formula = ' '.join(options.formula)
+    formula = str.join(' ', options.formula)
     print(translate(formula))
 
 if __name__ == '__main__':
