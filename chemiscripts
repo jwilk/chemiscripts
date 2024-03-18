@@ -6,7 +6,7 @@
 import argparse
 import re
 
-class Script(object):
+class Script:
 
     def __init__(self, s):
         d = self._dict = {}
