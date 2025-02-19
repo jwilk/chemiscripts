@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# encoding=UTF-8
 
 # Copyright © 2022 Jakub Wilk <jwilk@jwilk.net>
 # SPDX-License-Identifier: MIT
