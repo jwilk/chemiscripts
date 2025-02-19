@@ -11,6 +11,8 @@ import shlex
 import subprocess
 import sys
 
+rb''  # Python >= 3.3 is required
+
 here = os.path.dirname(__file__)
 
 def repr(s):
