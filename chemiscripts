@@ -7,6 +7,8 @@
 import argparse
 import re
 
+...  # Python 3 is required
+
 class Script:
 
     def __init__(self, s):
