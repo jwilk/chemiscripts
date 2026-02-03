@@ -52,6 +52,7 @@ def translate(formula):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.color = False
     ap.add_argument('formula', metavar='FORMULA', nargs='+')
     options = ap.parse_args()
     formula = str.join(' ', options.formula)
